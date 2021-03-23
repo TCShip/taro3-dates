@@ -64,9 +64,10 @@ export default class Month extends AtComponent<MonthProps, MonthState> {
                         return (
                             <Week key={week}>
                                 {week && week.length && week.map(day => {
+                                    const stamp = day? dayjs(day).valueOf():  Math.random() * 999999
                                     return (
                                         <Day
-                                          key={day}
+                                          key={stamp}
                                           day={day}
                                           isSingle={isSingle}
                                           isOutsideDay={!day || day.month() !== month.month()}

@@ -23,7 +23,7 @@ import isBeforeDay from './utils/isBeforeDay';
 import getSelectedDateOffset from './utils/getSelectedDateOffset';
 import getPooledMoment from './utils/getPooledMoment';
 import getNumberOfCalendarMonthWeeks from './utils/getNumberOfCalendarMonthWeeks';
-import { delayQuerySelector } from '../../utils';
+// import { delayQuerySelector } from '../../utils';
 import AtComponent from '../../common/component';
 import Month from './Month';
 
@@ -98,10 +98,10 @@ export default class TaroDates extends AtComponent<TaroDateProps, TaroDateState>
       'blocked-minimum-nights': day => this.doesNotMeetMinimumNights(day),
       'selected-span': day => this.isInSelectedSpan(day),
       'last-in-range': day => this.isLastInRange(day),
-      hovered: day => this.isHovered(day),
-      'hovered-span': day => this.isInHoveredSpan(day),
-      'hovered-offset': day => this.isInHoveredSpan(day),
-      'after-hovered-start': day => this.isDayAfterHoveredStartDate(day),
+      // hovered: day => this.isHovered(day),
+      // 'hovered-span': day => this.isInHoveredSpan(day),
+      // 'hovered-offset': day => this.isInHoveredSpan(day),
+      // 'after-hovered-start': day => this.isDayAfterHoveredStartDate(day),
       'first-day-of-week': day => this.isFirstDayOfWeek(day),
       'last-day-of-week': day => this.isLastDayOfWeek(day),
       'saturday-ofweek': day => this.isSaturdayOfWeek(day)
@@ -114,6 +114,7 @@ export default class TaroDates extends AtComponent<TaroDateProps, TaroDateState>
 
     const withoutTransitionMonths = props.orientation === VERTICAL_SCROLLABLE;
     const _months = getMonths(dayjs(), props.numberOfMonths, withoutTransitionMonths)
+    
     this.state = {
       endDateState: props.endDate,
       months: _months,
@@ -439,26 +440,26 @@ export default class TaroDates extends AtComponent<TaroDateProps, TaroDateState>
 
   scrollToSelectMonth(selectMonth) {
     const that = this;
-    delayQuerySelector(this, '.cal-month__wrp', 100).then(rect => {
-      const monthItemHeight = rect && rect[0] && rect[0].height || 0
-      const _scrollTo: any = (selectMonth.month() - dayjs().month()) * monthItemHeight - 28
+    // delayQuerySelector(this, '.cal-month__wrp', 100).then(rect => {
+    //   const monthItemHeight = rect && rect[0] && rect[0].height || 0
+    //   const _scrollTo: any = (selectMonth.month() - dayjs().month()) * monthItemHeight - 28
       
 
-      Taro.pageScrollTo({
-        selector: '.taro-dates__wrap',
-        scrollTop: _scrollTo,
-        duration: 300,
-        success(data) {
-          console.log('scrollPageTo result: ', data)
-        },
-        fail() {
+    //   Taro.pageScrollTo({
+    //     selector: '.taro-dates__wrap',
+    //     scrollTop: _scrollTo,
+    //     duration: 300,
+    //     success(data) {
+    //       console.log('scrollPageTo result: ', data)
+    //     },
+    //     fail() {
 
-        },
-        complete() {
+    //     },
+    //     complete() {
 
-        }
-      })
-    })
+    //     }
+    //   })
+    // })
     
     const _selectMonth = dayjs(selectMonth).format('YYYY-MM')
     that.setState({
@@ -1068,12 +1069,12 @@ TaroDates.defaultProps = {
   isOutsideRange:  () => false,
   getMinNightsForHoverDate: () => 0,
   isReserveOfDay: () => false,
-  startDateOffset: () => {},
-  endDateOffset: () => {},
-  onBlur: () => {},
-  onClose: () => {},
-  onFocusChange: () => {},
-  onDatesChange: () => {},
+  startDateOffset: null,
+  endDateOffset: null,
+  onBlur: null,
+  onClose: null,
+  onFocusChange: null,
+  onDatesChange: null,
 }
 
 TaroDates.propTypes = {
