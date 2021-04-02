@@ -159,7 +159,7 @@ export default class Day extends AtComponent<DayProps, DayState> {
                         modifiers && modifiers.has('selected-end') && !isSingle && <Text className='cal-day__dir end'>返程</Text>
                     }
                     {
-                        dayVal && <Text className='cal-day__txt'>{dayVal}</Text>
+                        dayVal ? <Text className='cal-day__txt'>{dayVal}</Text>: <Text> </Text>
                     }
                     {
                         _holiday && !isReserveDay &&  <Text className='cal-day__txt-holiday'>{_holiday}</Text>
