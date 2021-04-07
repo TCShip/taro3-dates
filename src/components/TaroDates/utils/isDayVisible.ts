@@ -1,5 +1,3 @@
-import dayjs from 'dayjs';
-
 import isBeforeDay from './isBeforeDay';
 import isAfterDay from './isAfterDay';
 import toISOMonthString from './toISOMonthString';
@@ -11,7 +9,7 @@ const startCacheInsideDays = new Map();
 const endCacheInsideDays = new Map();
 
 export default function isDayVisible(day, month, numberOfMonths, enableOutsideDays) {
-  if (!dayjs.isDayjs(day)) return false;
+  if (!day) return false;
 
   // Cloning is a little expensive, so we want to do it as little as possible.
 

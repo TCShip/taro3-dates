@@ -153,21 +153,21 @@ export default class Day extends AtComponent<DayProps, DayState> {
             >
                 <View className='cal-day__txt-wrp'>
                     {
+                        dayVal ? <Text className='cal-day__txt'>{dayVal}</Text>: <Text className='cal-day__txt cal-day__hide'>·</Text>
+                    }
+                    {
+                        _holiday && !isReserveDay &&  <Text className='cal-day__txt-holiday'>{_holiday}</Text>
+                    }
+                    {
+                        isReserveDay && !isOutsideDay && !isOutsideRange && <Text className='cal-day__txt cal-day__txt-price'>预约</Text>
+                    }
+                    {
                         modifiers && modifiers.has('selected-start') && !isSingle && <Text className='cal-day__dir start'>去程</Text>
                     }
                     {
                         modifiers && modifiers.has('selected-end') && !isSingle && <Text className='cal-day__dir end'>返程</Text>
                     }
-                    {
-                        dayVal ? <Text className='cal-day__txt'>{dayVal}</Text>: <Text className='cal-day__txt cal-day__hide'></Text>
-                    }
-                    {
-                        _holiday && !isReserveDay &&  <Text className='cal-day__txt-holiday'>{_holiday}</Text>
-                    }
-                    
-                    {
-                        isReserveDay && !isOutsideDay && !isOutsideRange && <Text className='cal-day__txt cal-day__txt-price'>预约</Text>
-                    }
+                   
                 </View>
 
             </View>

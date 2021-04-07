@@ -545,7 +545,6 @@ export default class TaroDates extends AtComponent<TaroDateProps, TaroDateState>
 
   isInSelectedSpan(day) {
     const { startDate, endDate } = this.props;
-    // console.log("startDate: ", startDate.format('YYYY-MM-DD'))
     return day.isBetween(startDate, endDate, 'day');
   }
   isLastInRange(day) {
@@ -1006,7 +1005,7 @@ export default class TaroDates extends AtComponent<TaroDateProps, TaroDateState>
             })
           }
         </View>
-        <ScrollView className="cal-month__scroll" scrollIntoView={intoView} scrollY>
+        <ScrollView className='cal-month__scroll' scrollIntoView={intoView} scrollY>
         <View className={classnames(
           'cal-week-monthes', {
             'cal-month__round': !isSingle

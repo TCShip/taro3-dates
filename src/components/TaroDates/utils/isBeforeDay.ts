@@ -1,7 +1,5 @@
-import dayjs from 'dayjs';
-
 export default function isBeforeDay(a, b) {
-  if (!dayjs.isDayjs(a) || !dayjs.isDayjs(b)) return false;
+  if (!a || !b) return false;
 
   const aYear = a.year();
   const aMonth = a.month();
