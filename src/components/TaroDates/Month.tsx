@@ -77,7 +77,7 @@ export default class Month extends AtComponent<MonthProps, MonthState> {
                                           onDayMouseLeave={onDayMouseLeave}
                                           onDayClick={onDayClick}
                                         ></Day>
-                                    ): <View className='cal-day'>
+                                    ): <View className='cal-day' key={stamp}>
                                         <View className='cal-day__txt-wrp'>
                                             <View className='cal-day__txt cal-day__hide'>·</View>
                                         </View>
