@@ -63,8 +63,8 @@ export default class Month extends AtComponent<MonthProps, MonthState> {
                     weeks && weeks.length && weeks.map((week:any) => {
                         return (
                             <Week key={week}>
-                                {week && week.length && week.map(day => {
-                                    const stamp = day? dayjs(day).valueOf():  Math.random() * 999999
+                                {week && week.length && week.map((day, index) => {
+                                    const stamp = dayjs(day).valueOf()
                                     return day? (
                                         <Day
                                           key={stamp}
@@ -77,7 +77,7 @@ export default class Month extends AtComponent<MonthProps, MonthState> {
                                           onDayMouseLeave={onDayMouseLeave}
                                           onDayClick={onDayClick}
                                         ></Day>
-                                    ): <View className='cal-day' key={stamp}>
+                                    ): <View className='cal-day' key={index}>
                                         <View className='cal-day__txt-wrp'>
                                             <View className='cal-day__txt cal-day__hide'>·</View>
                                         </View>
